@@ -9,20 +9,23 @@ COVID19SCfigdir=$HOME/dev/atualizadadosCOVID19SC/figures
 
 # Run ICL Rscript for all brazilian states
 cd $ICLdir
-Rscript base-Brazil.r --full >> $LOGFILE 2>&1
-git commit -a -m "run ICL Brazil model in $(date +%Y-%m-%d-%T)" >> $LOGFILE 2>&1
+#Rscript base-Brazil.r --full >> $LOGFILE 2>&1
+#git commit -a -m "run ICL Brazil model in $(date +%Y-%m-%d-%T)" >> $LOGFILE 2>&1
 
 #  Copy SC Figure to covid19sc
 cd $ICLfigures
-latest=(SC*.png(.om[1]))
+latestRt=(SC-R*.png(.om[1]))
+fignewnameRt=resultadoRt_ICL_SC_$(date --date="1 day ago" +%Y-%m-%d).png
+cp -f  $latestRt $COVID19SCfigdir/$fignewnameRt
+latest=(SC-t*.png(.om[1]))
 fignewname=resultado_ICL_SC_$(date --date="1 day ago" +%Y-%m-%d).png
 cp -f  $latest $COVID19SCfigdir/$fignewname
 
 # Upload figure to github
 cd $COVID19SCfigdir
-git fetch --all
-git pull origin
-git add $fignewname
-git commit -a -m "Update ICL result from SC in $(date +%Y-%m-%d-%T)"
+git fetch --all >> $LOGFILE 2>&1
+git pull origin >> $LOGFILE 2>&1
+git add $fignewname $fignewnameRt >> $LOGFILE 2>&1
+git commit -a -m "Update ICL result from SC in $(date +%Y-%m-%d-%T)" >> $LOGFILE 2>&1
 git push >> $LOGFILE 2>&1
 echo "$(date +%Y-%m-$d-%T) : Finished" >> $LOGFILE 2>&1
