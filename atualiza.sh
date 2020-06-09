@@ -9,8 +9,8 @@ COVID19SCfigdir=$HOME/dev/atualizadadosCOVID19SC/figures
 
 # Run ICL Rscript for all brazilian states
 cd $ICLdir
-#Rscript base-Brazil.r --full >> $LOGFILE 2>&1
-#git commit -a -m "run ICL Brazil model in $(date +%Y-%m-%d-%T)" >> $LOGFILE 2>&1
+Rscript base-Brazil.r --full >> $LOGFILE 2>&1
+git commit -a -m "run ICL Brazil model in $(date +%Y-%m-%d-%T)" >> $LOGFILE 2>&1
 
 #  Copy SC Figure to covid19sc
 cd $ICLfigures
