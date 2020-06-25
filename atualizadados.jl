@@ -1,9 +1,9 @@
 using DataFrames, CSV, Dates  
 dateformat = DateFormat("yyyy-mm-dd")
 
-# url_dataSC  = "ftp://boavista:dados_abertos@ftp2.ciasc.gov.br/boavista_covid_dados_abertos.csv"
-# rawdata = CSV.read(download(url_dataSC),normalizenames=true,missingstrings=["NULL", "IGNORADO"], delim = ";")
-rawdata = CSV.read("boavista_covid_dados_abertos.csv",normalizenames=true,missingstrings=["NULL", "IGNORADO"],delim = ";")
+url_dataSC  = "ftp://boavista:dados_abertos@ftp2.ciasc.gov.br/boavista_covid_dados_abertos.csv"
+rawdata = CSV.read(download(url_dataSC),normalizenames=true,missingstrings=["NULL", "IGNORADO"], delim = ";")
+# rawdata = CSV.read("boavista_covid_dados_abertos.csv",normalizenames=true,missingstrings=["NULL", "IGNORADO"],delim = ";")
 rawdata[!,:data_publicacao] = Date.(SubString.(rawdata.data_publicacao,1,10),dateformat)
 rawdata[!,:data_resultado] = Date.(SubString.(rawdata.data_resultado,1,10),dateformat)
 # rawdata[!,:data_coleta] = Date.(skipmissing(rawdata.data_coleta),dateformat)
