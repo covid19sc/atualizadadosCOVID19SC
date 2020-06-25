@@ -2,7 +2,7 @@
 
 LOGFILE=$HOME/dev/atualizadadosCOVID19SC/log/cron"$(date +%Y-%m-%d-%T)".log
 echo "$(date +%Y-%m-$d-%T) : Starting work\n"  >> $LOGFILE 2>&1
-echo "Atualiza ICL Rt para página" >> $LOGFILE 2>&1
+echo "Atualiza resultados modelos ICL para SC" >> $LOGFILE 2>&1
 ICLdir=$HOME/dev/covid19model
 ICLfigures=$HOME/dev/covid19model/Brazil/figures
 COVID19figdir=$HOME/dev/atualizadadosCOVID19SC/figures
