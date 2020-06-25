@@ -7,6 +7,9 @@ ICLdir=$HOME/dev/covid19model
 ICLfigures=$HOME/dev/covid19model/Brazil/figures
 COVID19SCfigdir=$HOME/dev/atualizadadosCOVID19SC/figures
 
+#Updates SC data using Julia
+julia -E 'include("atualizadados.jl")'
+
 # Run ICL Rscript for all brazilian states
 cd $ICLdir
 Rscript base-Brazil.r --full >> $LOGFILE 2>&1
