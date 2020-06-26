@@ -1,4 +1,5 @@
 #!/bin/zsh
+echo "Inicio Script $(date +%Y-%m-$d-%T)"
 
 LOGFILE=$HOME/dev/atualizadadosCOVID19SC/log/cron"$(date +%Y-%m-%d-%T)".log
 echo "$(date +%Y-%m-$d-%T) : Starting work\n"  >> $LOGFILE 2>&1
@@ -7,7 +8,10 @@ ICLdir=$HOME/dev/covid19model
 ICLfigures=$HOME/dev/covid19model/Brazil/figures
 COVID19figdir=$HOME/dev/atualizadadosCOVID19SC/figures
 
+COVID19dir=$HOME/dev/atualizadadosCOVID19SC
+
 #Updates SC data using Julia
+cd $COVID19dir
 julia -E 'include("atualizadados.jl")'
 
 # Run ICL Rscript for all SC regions
@@ -100,3 +104,5 @@ git add --all >> $LOGFILE 2>&1
 git commit -a -m "Update ICL results for SC in $(date +%Y-%m-%d-%T)" >> $LOGFILE 2>&1
 git push >> $LOGFILE 2>&1
 echo "$(date +%Y-%m-$d-%T) : Finished" >> $LOGFILE 2>&1
+
+echo "Inicio Fim Script $(date +%Y-%m-$d-%T)"
