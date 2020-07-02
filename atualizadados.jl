@@ -60,7 +60,13 @@ for row in eachrow(dados_pop)
 end
 
 
+
 CSV.write("../covid19model/Brazil/data/sc-deaths.csv",df)
 
-
-
+# using StatsPlots, RollingFunctions
+# dfSC = filter(row->row[:estado]== "SC", df)
+# dfSC.casos_media7 = runmean(dfSC[!,:casos_novos],7)
+# plt =  @df dfSC bar(:data,:casos_novos,label="Casos Novos")
+# @df dfSC plot!(:data,:casos_media7,label="Média Móvel 7 dias", lw=2)
+# title!("Casos Novos por Data de Sintoma -- SC -- até "*Dates.format(last(dfSC[!,:data]),dateformat"dd-u-yyyy"))
+# savefig(plt,"~/Downloads/Casos_novos+MediaMovel.png")
