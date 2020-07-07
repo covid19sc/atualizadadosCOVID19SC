@@ -12,7 +12,7 @@ COVID19dir=$HOME/dev/atualizadadosCOVID19SC
 
 #Updates SC data using Julia
 cd $COVID19dir
-julia -E 'include("atualizadados.jl")'
+julia -E 'include("atualizadados.jl")' >> $LOGFILE 2>&1 
 
 # Run ICL Rscript for all SC regions
 cd $ICLdir
